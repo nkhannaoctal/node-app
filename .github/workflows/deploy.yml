@@ -22,4 +22,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            echo "Connected successfully"
+            cd node-app
+            git pull origin main
+            npm install
+            pm2 restart myapp || pm2 start app.js --name myapp
